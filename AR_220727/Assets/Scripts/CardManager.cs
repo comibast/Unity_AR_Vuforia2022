@@ -21,10 +21,12 @@ namespace Comibast.AR.Vuforia
             private VirtualButtonBehaviour vbbJump;
 
             private string parVictory = "觸發勝利";
+            private string parJump = "觸發跳躍";
+            private string parAttack = "觸發攻擊";
             private AudioSource audBGM;
 
-        private void Awake()
-        {
+            private void Awake()
+            {
             //AddListener 對 Unity 事件增加監聽器，監聽器為自訂方法。
 
             observerKID.OnTargetFound.AddListener(CardFound);                //目標找到事件
@@ -35,12 +37,13 @@ namespace Comibast.AR.Vuforia
             vbbJump.RegisterOnButtonPressed(OnJumpPressed);                  //註冊虛擬按鈕按下後執行方法
 
             audBGM = GameObject.Find("BGM").GetComponent<AudioSource>();
-        }
+            }
 
         private void OnJumpPressed(VirtualButtonBehaviour obj)
 
         {
             print("<color=#3366dd>跳躍!!</color>");
+            aniKnight.SetTrigger(parJump);
         }
 
 
@@ -66,6 +69,7 @@ namespace Comibast.AR.Vuforia
         private void Attack()
         {
             print("<color=#9955aa>攻擊!!</color>");
+            aniKnight.SetTrigger(parAttack);
         }
 
 
